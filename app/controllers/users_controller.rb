@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   end
 
   def create
-  	user = User.create(name: params[:name], bio: params[:bio])
-  	redirect_to "/users/#{user.id}"
+  	@user = User.create(name: params[:name], bio: params[:bio])
+  	redirect_to "/show/#{@user.name}"
 
   end
 
   def show
-  	@user = User.find(params[:id])
+  	@user = User.find_by_name(params[:name])
   end
 
 
